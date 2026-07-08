@@ -1,0 +1,299 @@
+=== P4: the self-correcting (Reflexion-style) loop ===
+maker=RuleBasedSocialEngine  grader=RuleBasedVerifier  (maker != grader)
+world=park/afternoon maxIntensity=4  goal_stage='walk_buddy' max_turns=12 max_engine_calls=60 stall_patience=4
+step order: engine proposes -> SAFETY GATE decides -> independent VERIFIER critiques -> writeback -> next turn injects it.
+
+--- Turn 1 ---
+  [DOWNGRADED] a_jordan -> a_theo: leave_a_note (intensity 2)
+      proposal rationale  : Jordan and Theo share energy/traits; propose an active meetup at the park. | downgraded: high-intensity action was denied.
+      gate                : original 'visit' (intensity 8) denied: Denied by policy 'cap_intensity'.; downgraded to 'leave_a_note'.
+      verifier (grader)   : score=0.87 advance=True appropriate=True | recovered via downgrade to 'leave_a_note'; bond advanced (+1)
+      relationship        : stranger(0) -> stranger(1)
+  [DOWNGRADED] a_riley -> a_jordan: leave_a_note (intensity 2)
+      proposal rationale  : Riley and Jordan share energy/traits; propose an active meetup at the park. | downgraded: high-intensity action was denied.
+      gate                : original 'visit' (intensity 8) denied: Denied by policy 'cap_intensity'.; downgraded to 'leave_a_note'.
+      verifier (grader)   : score=0.87 advance=True appropriate=True | recovered via downgrade to 'leave_a_note'; bond advanced (+1)
+      relationship        : stranger(0) -> stranger(1)
+  [APPROVE   ] a_quinn -> a_sasha: gentle_intro (intensity 3)
+      proposal rationale  : Quinn or Sasha reads as low-energy/reserved; start light at the park.
+      gate                : APPROVE (social_action)
+      verifier (grader)   : score=0.88 advance=True appropriate=True | approved 'gentle_intro' advanced the goal (bond +1); good fit (compat 0.40)
+      relationship        : stranger(0) -> stranger(1)
+  [DOWNGRADED] a_sasha -> a_riley: leave_a_note (intensity 2)
+      proposal rationale  : Sasha and Riley share energy/traits; propose an active meetup at the park. | downgraded: high-intensity action was denied.
+      gate                : original 'visit' (intensity 8) denied: Denied by policy 'cap_intensity'.; downgraded to 'leave_a_note'.
+      verifier (grader)   : score=0.84 advance=True appropriate=True | recovered via downgrade to 'leave_a_note'; bond advanced (+1)
+      relationship        : stranger(0) -> stranger(1)
+  [DOWNGRADED] a_theo -> a_jordan: leave_a_note (intensity 2)
+      proposal rationale  : Theo and Jordan share energy/traits; propose an active meetup at the park. | downgraded: high-intensity action was denied.
+      gate                : original 'visit' (intensity 8) denied: Denied by policy 'cap_intensity'.; downgraded to 'leave_a_note'.
+      verifier (grader)   : score=0.87 advance=True appropriate=True | recovered via downgrade to 'leave_a_note'; bond advanced (+1)
+      relationship        : stranger(1) -> stranger(2)
+
+--- Turn 2 ---
+  [APPROVE   ] a_jordan -> a_theo: gentle_intro (intensity 3)
+      <- injected critique : recovered via downgrade to 'leave_a_note'; bond advanced (+1)
+      proposal rationale  : prior critique advised a gentler move; start light at the park.
+      gate                : APPROVE (social_action)
+      verifier (grader)   : score=0.92 advance=True appropriate=True | approved 'gentle_intro' advanced the goal (bond +1); good fit (compat 0.62)
+      relationship        : stranger(2) -> acquaintance(3)
+  [APPROVE   ] a_riley -> a_jordan: gentle_intro (intensity 3)
+      <- injected critique : recovered via downgrade to 'leave_a_note'; bond advanced (+1)
+      proposal rationale  : prior critique advised a gentler move; start light at the park.
+      gate                : APPROVE (social_action)
+      verifier (grader)   : score=0.92 advance=True appropriate=True | approved 'gentle_intro' advanced the goal (bond +1); good fit (compat 0.62)
+      relationship        : stranger(1) -> stranger(2)
+  [APPROVE   ] a_quinn -> a_sasha: gentle_intro (intensity 3)
+      <- injected critique : approved 'gentle_intro' advanced the goal (bond +1); good fit (compat 0.40)
+      proposal rationale  : Quinn or Sasha reads as low-energy/reserved; start light at the park.
+      gate                : APPROVE (social_action)
+      verifier (grader)   : score=0.88 advance=True appropriate=True | approved 'gentle_intro' advanced the goal (bond +1); good fit (compat 0.40)
+      relationship        : stranger(1) -> stranger(2)
+  [APPROVE   ] a_sasha -> a_riley: gentle_intro (intensity 3)
+      <- injected critique : recovered via downgrade to 'leave_a_note'; bond advanced (+1)
+      proposal rationale  : prior critique advised a gentler move; start light at the park.
+      gate                : APPROVE (social_action)
+      verifier (grader)   : score=0.89 advance=True appropriate=True | approved 'gentle_intro' advanced the goal (bond +1); good fit (compat 0.47)
+      relationship        : stranger(1) -> stranger(2)
+  [APPROVE   ] a_theo -> a_jordan: gentle_intro (intensity 3)
+      <- injected critique : recovered via downgrade to 'leave_a_note'; bond advanced (+1)
+      proposal rationale  : prior critique advised a gentler move; start light at the park.
+      gate                : APPROVE (social_action)
+      verifier (grader)   : score=0.92 advance=True appropriate=True | approved 'gentle_intro' advanced the goal (bond +1); good fit (compat 0.62)
+      relationship        : acquaintance(3) -> acquaintance(4)
+
+--- Turn 3 ---
+  [APPROVE   ] a_jordan -> a_theo: gentle_intro (intensity 3)
+      <- injected critique : approved 'gentle_intro' advanced the goal (bond +1); good fit (compat 0.62)
+      proposal rationale  : prior critique advised a gentler move; start light at the park.
+      gate                : APPROVE (social_action)
+      verifier (grader)   : score=0.92 advance=True appropriate=True | approved 'gentle_intro' advanced the goal (bond +1); good fit (compat 0.62)
+      relationship        : acquaintance(4) -> acquaintance(5)
+  [APPROVE   ] a_riley -> a_jordan: gentle_intro (intensity 3)
+      <- injected critique : approved 'gentle_intro' advanced the goal (bond +1); good fit (compat 0.62)
+      proposal rationale  : prior critique advised a gentler move; start light at the park.
+      gate                : APPROVE (social_action)
+      verifier (grader)   : score=0.92 advance=True appropriate=True | approved 'gentle_intro' advanced the goal (bond +1); good fit (compat 0.62)
+      relationship        : stranger(2) -> acquaintance(3)
+  [APPROVE   ] a_quinn -> a_sasha: gentle_intro (intensity 3)
+      <- injected critique : approved 'gentle_intro' advanced the goal (bond +1); good fit (compat 0.40)
+      proposal rationale  : Quinn or Sasha reads as low-energy/reserved; start light at the park.
+      gate                : APPROVE (social_action)
+      verifier (grader)   : score=0.88 advance=True appropriate=True | approved 'gentle_intro' advanced the goal (bond +1); good fit (compat 0.40)
+      relationship        : stranger(2) -> acquaintance(3)
+  [APPROVE   ] a_sasha -> a_riley: gentle_intro (intensity 3)
+      <- injected critique : approved 'gentle_intro' advanced the goal (bond +1); good fit (compat 0.47)
+      proposal rationale  : prior critique advised a gentler move; start light at the park.
+      gate                : APPROVE (social_action)
+      verifier (grader)   : score=0.89 advance=True appropriate=True | approved 'gentle_intro' advanced the goal (bond +1); good fit (compat 0.47)
+      relationship        : stranger(2) -> acquaintance(3)
+  [APPROVE   ] a_theo -> a_jordan: gentle_intro (intensity 3)
+      <- injected critique : approved 'gentle_intro' advanced the goal (bond +1); good fit (compat 0.62)
+      proposal rationale  : prior critique advised a gentler move; start light at the park.
+      gate                : APPROVE (social_action)
+      verifier (grader)   : score=0.92 advance=True appropriate=True | approved 'gentle_intro' advanced the goal (bond +1); good fit (compat 0.62)
+      relationship        : acquaintance(5) -> acquaintance(6)
+
+--- Turn 4 ---
+  [APPROVE   ] a_jordan -> a_riley: gentle_intro (intensity 3)
+      <- injected critique : approved 'gentle_intro' advanced the goal (bond +1); good fit (compat 0.62)
+      proposal rationale  : prior critique advised a gentler move; start light at the park.
+      gate                : APPROVE (social_action)
+      verifier (grader)   : score=0.92 advance=True appropriate=True | approved 'gentle_intro' advanced the goal (bond +1); good fit (compat 0.62)
+      relationship        : acquaintance(3) -> acquaintance(4)
+  [APPROVE   ] a_riley -> a_jordan: gentle_intro (intensity 3)
+      <- injected critique : approved 'gentle_intro' advanced the goal (bond +1); good fit (compat 0.62)
+      proposal rationale  : prior critique advised a gentler move; start light at the park.
+      gate                : APPROVE (social_action)
+      verifier (grader)   : score=0.92 advance=True appropriate=True | approved 'gentle_intro' advanced the goal (bond +1); good fit (compat 0.62)
+      relationship        : acquaintance(4) -> acquaintance(5)
+  [APPROVE   ] a_quinn -> a_sasha: gentle_intro (intensity 3)
+      <- injected critique : approved 'gentle_intro' advanced the goal (bond +1); good fit (compat 0.40)
+      proposal rationale  : Quinn or Sasha reads as low-energy/reserved; start light at the park.
+      gate                : APPROVE (social_action)
+      verifier (grader)   : score=0.88 advance=True appropriate=True | approved 'gentle_intro' advanced the goal (bond +1); good fit (compat 0.40)
+      relationship        : acquaintance(3) -> acquaintance(4)
+  [APPROVE   ] a_sasha -> a_riley: gentle_intro (intensity 3)
+      <- injected critique : approved 'gentle_intro' advanced the goal (bond +1); good fit (compat 0.47)
+      proposal rationale  : prior critique advised a gentler move; start light at the park.
+      gate                : APPROVE (social_action)
+      verifier (grader)   : score=0.89 advance=True appropriate=True | approved 'gentle_intro' advanced the goal (bond +1); good fit (compat 0.47)
+      relationship        : acquaintance(3) -> acquaintance(4)
+  [APPROVE   ] a_theo -> a_jordan: gentle_intro (intensity 3)
+      <- injected critique : approved 'gentle_intro' advanced the goal (bond +1); good fit (compat 0.62)
+      proposal rationale  : prior critique advised a gentler move; start light at the park.
+      gate                : APPROVE (social_action)
+      verifier (grader)   : score=0.92 advance=True appropriate=True | approved 'gentle_intro' advanced the goal (bond +1); good fit (compat 0.62)
+      relationship        : acquaintance(6) -> acquaintance(7)
+
+--- Turn 5 ---
+  [APPROVE   ] a_jordan -> a_riley: gentle_intro (intensity 3)
+      <- injected critique : approved 'gentle_intro' advanced the goal (bond +1); good fit (compat 0.62)
+      proposal rationale  : prior critique advised a gentler move; start light at the park.
+      gate                : APPROVE (social_action)
+      verifier (grader)   : score=0.92 advance=True appropriate=True | approved 'gentle_intro' advanced the goal (bond +1); good fit (compat 0.62)
+      relationship        : acquaintance(5) -> acquaintance(6)
+  [APPROVE   ] a_riley -> a_jordan: gentle_intro (intensity 3)
+      <- injected critique : approved 'gentle_intro' advanced the goal (bond +1); good fit (compat 0.62)
+      proposal rationale  : prior critique advised a gentler move; start light at the park.
+      gate                : APPROVE (social_action)
+      verifier (grader)   : score=0.92 advance=True appropriate=True | approved 'gentle_intro' advanced the goal (bond +1); good fit (compat 0.62)
+      relationship        : acquaintance(6) -> acquaintance(7)
+  [APPROVE   ] a_quinn -> a_sasha: gentle_intro (intensity 3)
+      <- injected critique : approved 'gentle_intro' advanced the goal (bond +1); good fit (compat 0.40)
+      proposal rationale  : Quinn or Sasha reads as low-energy/reserved; start light at the park.
+      gate                : APPROVE (social_action)
+      verifier (grader)   : score=0.88 advance=True appropriate=True | approved 'gentle_intro' advanced the goal (bond +1); good fit (compat 0.40)
+      relationship        : acquaintance(4) -> acquaintance(5)
+  [APPROVE   ] a_sasha -> a_riley: gentle_intro (intensity 3)
+      <- injected critique : approved 'gentle_intro' advanced the goal (bond +1); good fit (compat 0.47)
+      proposal rationale  : prior critique advised a gentler move; start light at the park.
+      gate                : APPROVE (social_action)
+      verifier (grader)   : score=0.89 advance=True appropriate=True | approved 'gentle_intro' advanced the goal (bond +1); good fit (compat 0.47)
+      relationship        : acquaintance(4) -> acquaintance(5)
+  [APPROVE   ] a_theo -> a_jordan: gentle_intro (intensity 3)
+      <- injected critique : approved 'gentle_intro' advanced the goal (bond +1); good fit (compat 0.62)
+      proposal rationale  : prior critique advised a gentler move; start light at the park.
+      gate                : APPROVE (social_action)
+      verifier (grader)   : score=0.92 advance=True appropriate=True | approved 'gentle_intro' advanced the goal (bond +1); good fit (compat 0.62)
+      relationship        : acquaintance(7) -> friendly(8)
+
+--- Turn 6 ---
+  [APPROVE   ] a_jordan -> a_theo: gentle_intro (intensity 3)
+      <- injected critique : approved 'gentle_intro' advanced the goal (bond +1); good fit (compat 0.62)
+      proposal rationale  : prior critique advised a gentler move; start light at the park.
+      gate                : APPROVE (social_action)
+      verifier (grader)   : score=0.92 advance=True appropriate=True | approved 'gentle_intro' advanced the goal (bond +1); good fit (compat 0.62)
+      relationship        : friendly(8) -> friendly(9)
+  [APPROVE   ] a_riley -> a_jordan: gentle_intro (intensity 3)
+      <- injected critique : approved 'gentle_intro' advanced the goal (bond +1); good fit (compat 0.62)
+      proposal rationale  : prior critique advised a gentler move; start light at the park.
+      gate                : APPROVE (social_action)
+      verifier (grader)   : score=0.92 advance=True appropriate=True | approved 'gentle_intro' advanced the goal (bond +1); good fit (compat 0.62)
+      relationship        : acquaintance(7) -> friendly(8)
+  [APPROVE   ] a_quinn -> a_sasha: gentle_intro (intensity 3)
+      <- injected critique : approved 'gentle_intro' advanced the goal (bond +1); good fit (compat 0.40)
+      proposal rationale  : Quinn or Sasha reads as low-energy/reserved; start light at the park.
+      gate                : APPROVE (social_action)
+      verifier (grader)   : score=0.88 advance=True appropriate=True | approved 'gentle_intro' advanced the goal (bond +1); good fit (compat 0.40)
+      relationship        : acquaintance(5) -> acquaintance(6)
+  [APPROVE   ] a_sasha -> a_riley: gentle_intro (intensity 3)
+      <- injected critique : approved 'gentle_intro' advanced the goal (bond +1); good fit (compat 0.47)
+      proposal rationale  : prior critique advised a gentler move; start light at the park.
+      gate                : APPROVE (social_action)
+      verifier (grader)   : score=0.89 advance=True appropriate=True | approved 'gentle_intro' advanced the goal (bond +1); good fit (compat 0.47)
+      relationship        : acquaintance(5) -> acquaintance(6)
+  [APPROVE   ] a_theo -> a_jordan: gentle_intro (intensity 3)
+      <- injected critique : approved 'gentle_intro' advanced the goal (bond +1); good fit (compat 0.62)
+      proposal rationale  : prior critique advised a gentler move; start light at the park.
+      gate                : APPROVE (social_action)
+      verifier (grader)   : score=0.92 advance=True appropriate=True | approved 'gentle_intro' advanced the goal (bond +1); good fit (compat 0.62)
+      relationship        : friendly(9) -> friendly(10)
+
+--- Turn 7 ---
+  [APPROVE   ] a_jordan -> a_theo: gentle_intro (intensity 3)
+      <- injected critique : approved 'gentle_intro' advanced the goal (bond +1); good fit (compat 0.62)
+      proposal rationale  : prior critique advised a gentler move; start light at the park.
+      gate                : APPROVE (social_action)
+      verifier (grader)   : score=0.92 advance=True appropriate=True | approved 'gentle_intro' advanced the goal (bond +1); good fit (compat 0.62)
+      relationship        : friendly(10) -> friendly(11)
+  [APPROVE   ] a_riley -> a_jordan: gentle_intro (intensity 3)
+      <- injected critique : approved 'gentle_intro' advanced the goal (bond +1); good fit (compat 0.62)
+      proposal rationale  : prior critique advised a gentler move; start light at the park.
+      gate                : APPROVE (social_action)
+      verifier (grader)   : score=0.92 advance=True appropriate=True | approved 'gentle_intro' advanced the goal (bond +1); good fit (compat 0.62)
+      relationship        : friendly(8) -> friendly(9)
+  [APPROVE   ] a_quinn -> a_sasha: gentle_intro (intensity 3)
+      <- injected critique : approved 'gentle_intro' advanced the goal (bond +1); good fit (compat 0.40)
+      proposal rationale  : Quinn or Sasha reads as low-energy/reserved; start light at the park.
+      gate                : APPROVE (social_action)
+      verifier (grader)   : score=0.88 advance=True appropriate=True | approved 'gentle_intro' advanced the goal (bond +1); good fit (compat 0.40)
+      relationship        : acquaintance(6) -> acquaintance(7)
+  [APPROVE   ] a_sasha -> a_riley: gentle_intro (intensity 3)
+      <- injected critique : approved 'gentle_intro' advanced the goal (bond +1); good fit (compat 0.47)
+      proposal rationale  : prior critique advised a gentler move; start light at the park.
+      gate                : APPROVE (social_action)
+      verifier (grader)   : score=0.89 advance=True appropriate=True | approved 'gentle_intro' advanced the goal (bond +1); good fit (compat 0.47)
+      relationship        : acquaintance(6) -> acquaintance(7)
+  [APPROVE   ] a_theo -> a_jordan: gentle_intro (intensity 3)
+      <- injected critique : approved 'gentle_intro' advanced the goal (bond +1); good fit (compat 0.62)
+      proposal rationale  : prior critique advised a gentler move; start light at the park.
+      gate                : APPROVE (social_action)
+      verifier (grader)   : score=0.92 advance=True appropriate=True | approved 'gentle_intro' advanced the goal (bond +1); good fit (compat 0.62)
+      relationship        : friendly(11) -> friendly(12)
+
+--- Turn 8 ---
+  [APPROVE   ] a_jordan -> a_theo: gentle_intro (intensity 3)
+      <- injected critique : approved 'gentle_intro' advanced the goal (bond +1); good fit (compat 0.62)
+      proposal rationale  : prior critique advised a gentler move; start light at the park.
+      gate                : APPROVE (social_action)
+      verifier (grader)   : score=0.92 advance=True appropriate=True | approved 'gentle_intro' advanced the goal (bond +1); good fit (compat 0.62)
+      relationship        : friendly(12) -> friendly(13)
+  [APPROVE   ] a_riley -> a_jordan: gentle_intro (intensity 3)
+      <- injected critique : approved 'gentle_intro' advanced the goal (bond +1); good fit (compat 0.62)
+      proposal rationale  : prior critique advised a gentler move; start light at the park.
+      gate                : APPROVE (social_action)
+      verifier (grader)   : score=0.92 advance=True appropriate=True | approved 'gentle_intro' advanced the goal (bond +1); good fit (compat 0.62)
+      relationship        : friendly(9) -> friendly(10)
+  [APPROVE   ] a_quinn -> a_sasha: gentle_intro (intensity 3)
+      <- injected critique : approved 'gentle_intro' advanced the goal (bond +1); good fit (compat 0.40)
+      proposal rationale  : Quinn or Sasha reads as low-energy/reserved; start light at the park.
+      gate                : APPROVE (social_action)
+      verifier (grader)   : score=0.88 advance=True appropriate=True | approved 'gentle_intro' advanced the goal (bond +1); good fit (compat 0.40)
+      relationship        : acquaintance(7) -> friendly(8)
+  [APPROVE   ] a_sasha -> a_riley: gentle_intro (intensity 3)
+      <- injected critique : approved 'gentle_intro' advanced the goal (bond +1); good fit (compat 0.47)
+      proposal rationale  : prior critique advised a gentler move; start light at the park.
+      gate                : APPROVE (social_action)
+      verifier (grader)   : score=0.89 advance=True appropriate=True | approved 'gentle_intro' advanced the goal (bond +1); good fit (compat 0.47)
+      relationship        : acquaintance(7) -> friendly(8)
+  [APPROVE   ] a_theo -> a_jordan: gentle_intro (intensity 3)
+      <- injected critique : approved 'gentle_intro' advanced the goal (bond +1); good fit (compat 0.62)
+      proposal rationale  : prior critique advised a gentler move; start light at the park.
+      gate                : APPROVE (social_action)
+      verifier (grader)   : score=0.92 advance=True appropriate=True | approved 'gentle_intro' advanced the goal (bond +1); good fit (compat 0.62)
+      relationship        : friendly(13) -> friendly(14)
+
+--- Turn 9 ---
+  [APPROVE   ] a_jordan -> a_riley: gentle_intro (intensity 3)
+      <- injected critique : approved 'gentle_intro' advanced the goal (bond +1); good fit (compat 0.62)
+      proposal rationale  : prior critique advised a gentler move; start light at the park.
+      gate                : APPROVE (social_action)
+      verifier (grader)   : score=0.92 advance=True appropriate=True | approved 'gentle_intro' advanced the goal (bond +1); good fit (compat 0.62)
+      relationship        : friendly(10) -> friendly(11)
+  [APPROVE   ] a_riley -> a_jordan: gentle_intro (intensity 3)
+      <- injected critique : approved 'gentle_intro' advanced the goal (bond +1); good fit (compat 0.62)
+      proposal rationale  : prior critique advised a gentler move; start light at the park.
+      gate                : APPROVE (social_action)
+      verifier (grader)   : score=0.92 advance=True appropriate=True | approved 'gentle_intro' advanced the goal (bond +1); good fit (compat 0.62)
+      relationship        : friendly(11) -> friendly(12)
+  [APPROVE   ] a_quinn -> a_sasha: gentle_intro (intensity 3)
+      <- injected critique : approved 'gentle_intro' advanced the goal (bond +1); good fit (compat 0.40)
+      proposal rationale  : Quinn or Sasha reads as low-energy/reserved; start light at the park.
+      gate                : APPROVE (social_action)
+      verifier (grader)   : score=0.88 advance=True appropriate=True | approved 'gentle_intro' advanced the goal (bond +1); good fit (compat 0.40)
+      relationship        : friendly(8) -> friendly(9)
+  [APPROVE   ] a_sasha -> a_riley: gentle_intro (intensity 3)
+      <- injected critique : approved 'gentle_intro' advanced the goal (bond +1); good fit (compat 0.47)
+      proposal rationale  : prior critique advised a gentler move; start light at the park.
+      gate                : APPROVE (social_action)
+      verifier (grader)   : score=0.89 advance=True appropriate=True | approved 'gentle_intro' advanced the goal (bond +1); good fit (compat 0.47)
+      relationship        : friendly(8) -> friendly(9)
+  [APPROVE   ] a_theo -> a_jordan: gentle_intro (intensity 3)
+      <- injected critique : approved 'gentle_intro' advanced the goal (bond +1); good fit (compat 0.62)
+      proposal rationale  : prior critique advised a gentler move; start light at the park.
+      gate                : APPROVE (social_action)
+      verifier (grader)   : score=0.92 advance=True appropriate=True | approved 'gentle_intro' advanced the goal (bond +1); good fit (compat 0.62)
+      relationship        : friendly(14) -> walk_buddy(15)
+
+=== Relationship state (persisted memory) ===
+  a_jordan <-> a_theo: walk_buddy   bond=15  interactions=15
+  a_jordan <-> a_riley: friendly     bond=12  interactions=12
+  a_quinn <-> a_sasha: friendly     bond=9   interactions=9
+  a_riley <-> a_sasha: friendly     bond=9   interactions=9
+
+STOP: goal_reached — a pair reached 'walk_buddy' on turn 9
+responsible loop engineering: engine_calls=45 verifier_calls=45 gate_evaluations=49 sim_tokens=8100
+persisted: events=45 critiques=45 across 9 turns.
+
+P4 OK: every step was gate-governed AND independently verified; critiques are durable and self-correct the next turn.

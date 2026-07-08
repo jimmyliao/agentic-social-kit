@@ -1,0 +1,36 @@
+=== P1: personality -> SocialEvent, gated by a declarative safety gate ===
+
+### Scenario A — outgoing pair, relaxed safety
+  subject:  Jordan traits=['outgoing', 'playful'] energy=8
+  candidate:Riley traits=['outgoing', 'curious'] energy=7
+  safety:   maxIntensity=9 requireConsent=False blockedIds=[]
+  EVENT:    type=visit intensity=8 score=0.62
+            action='Set up a park hangout this afternoon'
+            rationale=Jordan and Riley share energy/traits; propose an active meetup at the park.
+  DECISION: APPROVE  | APPROVE (social_action)
+
+### Scenario B — outgoing pair, tightened maxIntensity
+  subject:  Jordan traits=['outgoing', 'playful'] energy=8
+  candidate:Riley traits=['outgoing', 'curious'] energy=7
+  safety:   maxIntensity=4 requireConsent=False blockedIds=[]
+  EVENT:    type=leave_a_note intensity=2 score=0.62
+            action='Leave a friendly note at the coworking'
+            rationale=Jordan and Riley share energy/traits; propose an active meetup at the coworking. | downgraded: high-intensity action was denied.
+  DECISION: DOWNGRADED (orig DENY) -> APPROVE  | original 'visit' (intensity 8) denied: Denied by policy 'cap_intensity'.; downgraded to 'leave_a_note'.
+
+### Scenario C — reserved subject, consent required
+  subject:  Quinn traits=['shy', 'reserved'] energy=2
+  candidate:Sasha traits=['calm', 'gentle'] energy=4
+  safety:   maxIntensity=6 requireConsent=True blockedIds=[]
+  EVENT:    type=gentle_intro intensity=3 score=0.4
+            action='Wave hello at the cafe'
+            rationale=Quinn or Sasha reads as low-energy/reserved; start light at the cafe.
+  DECISION: ASK_USER  | User denied tool 'social_action' (policy 'require_consent').
+
+### Scenario D — only candidate is blocked
+  subject:  Jordan traits=['outgoing'] energy=8
+  candidate:Riley traits=['outgoing'] energy=7
+  safety:   maxIntensity=9 requireConsent=False blockedIds=['p_riley']
+  -> no eligible candidates (all blocked)
+
+P1 OK: every event carries a visible, declaratively-derived gate decision.

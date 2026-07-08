@@ -1,0 +1,10 @@
+=== P0: declarative safety gate on the Google Antigravity SDK ===
+Agent built (Agent). policies=6 triggers=1 response_schema=True
+
+Policy decisions over mock actions (offline, no model call):
+  calm low-intensity wave                    -> APPROVE   allow=True  
+  over-cap visit (should DENY)               -> DENY      allow=False Denied by policy 'cap_intensity'.
+        [ASK_USER] consent prompt raised -> (demo answers: no)
+  consent-required meetup (should ASK_USER)  -> ASK_USER  allow=False User denied tool 'social_action' (policy 'require_consent').
+
+P0 OK: APPROVE / DENY / ASK_USER all observable, decided declaratively.

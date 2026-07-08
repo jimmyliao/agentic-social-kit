@@ -1,0 +1,59 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 470" font-family="-apple-system, 'Helvetica Neue', 'Noto Sans CJK TC', sans-serif">
+  <rect width="760" height="470" fill="#ffffff"/>
+
+  <defs>
+    <marker id="arrow" markerWidth="9" markerHeight="9" refX="7" refY="4" orient="auto">
+      <path d="M0,0 L8,4 L0,8 Z" fill="#2563EB"/>
+    </marker>
+    <marker id="arrowStop" markerWidth="9" markerHeight="9" refX="7" refY="4" orient="auto">
+      <path d="M0,0 L8,4 L0,8 Z" fill="#64748B"/>
+    </marker>
+  </defs>
+
+  <text x="380" y="34" text-anchor="middle" font-size="19" font-weight="700" fill="#0f172a">會自我修正的迴圈 · self-correcting loop</text>
+
+  <!-- propose -->
+  <rect x="300" y="62" width="160" height="48" rx="9" fill="#EFF6FF" stroke="#2563EB" stroke-width="1.6"/>
+  <text x="380" y="84" text-anchor="middle" font-size="14" font-weight="700" fill="#1d4ed8">engine 提案</text>
+  <text x="380" y="101" text-anchor="middle" font-size="11.5" fill="#475569">propose</text>
+
+  <!-- gate -->
+  <rect x="540" y="178" width="170" height="56" rx="9" fill="#EFF6FF" stroke="#2563EB" stroke-width="1.6"/>
+  <text x="625" y="201" text-anchor="middle" font-size="14" font-weight="700" fill="#1d4ed8">[ 安全閘 ] verdict</text>
+  <text x="625" y="219" text-anchor="middle" font-size="10.5" fill="#475569">APPROVE/DENY/↓DOWNGRADE/ASK_USER</text>
+
+  <!-- verifier -->
+  <rect x="510" y="330" width="200" height="56" rx="9" fill="#EFF6FF" stroke="#2563EB" stroke-width="1.6"/>
+  <text x="610" y="353" text-anchor="middle" font-size="14" font-weight="700" fill="#1d4ed8">[ verifier ] critique</text>
+  <text x="610" y="371" text-anchor="middle" font-size="10.5" fill="#475569">maker ≠ grader · score 0–1</text>
+
+  <!-- memory writeback -->
+  <rect x="220" y="330" width="200" height="56" rx="9" fill="#EFF6FF" stroke="#2563EB" stroke-width="1.6"/>
+  <text x="320" y="353" text-anchor="middle" font-size="14" font-weight="700" fill="#1d4ed8">memory 寫回</text>
+  <text x="320" y="371" text-anchor="middle" font-size="10.5" fill="#475569">critiques (SQLite, durable)</text>
+
+  <!-- inject -->
+  <rect x="40" y="178" width="180" height="56" rx="9" fill="#EFF6FF" stroke="#2563EB" stroke-width="1.6"/>
+  <text x="130" y="201" text-anchor="middle" font-size="14" font-weight="700" fill="#1d4ed8">下一回合注入</text>
+  <text x="130" y="219" text-anchor="middle" font-size="10.5" fill="#475569">inject → adviseLighter</text>
+
+  <!-- arrows forming the cycle -->
+  <!-- propose -> gate -->
+  <path d="M455,108 Q560,135 600,176" fill="none" stroke="#2563EB" stroke-width="2" marker-end="url(#arrow)"/>
+  <!-- gate -> verifier -->
+  <path d="M627,236 Q625,290 612,328" fill="none" stroke="#2563EB" stroke-width="2" marker-end="url(#arrow)"/>
+  <!-- verifier -> memory -->
+  <path d="M508,358 L424,358" fill="none" stroke="#2563EB" stroke-width="2" marker-end="url(#arrow)"/>
+  <!-- memory -> inject -->
+  <path d="M250,328 Q150,290 132,236" fill="none" stroke="#2563EB" stroke-width="2" marker-end="url(#arrow)"/>
+  <!-- inject -> propose (next turn) -->
+  <path d="M180,176 Q230,118 298,92" fill="none" stroke="#2563EB" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <!-- STOP exit from gate region -->
+  <rect x="305" y="195" width="150" height="58" rx="9" fill="#F1F5F9" stroke="#64748B" stroke-width="1.6" stroke-dasharray="5 4"/>
+  <text x="380" y="219" text-anchor="middle" font-size="14" font-weight="700" fill="#334155">STOP</text>
+  <text x="380" y="238" text-anchor="middle" font-size="10.5" fill="#64748B">goal / budget / stalled</text>
+  <path d="M537,222 L458,222" fill="none" stroke="#64748B" stroke-width="1.8" stroke-dasharray="5 4" marker-end="url(#arrowStop)"/>
+
+  <text x="380" y="436" text-anchor="middle" font-size="11.5" fill="#94a3b8">每一回合：閘照判每一步 · verifier 是「額外」治理，不是替代</text>
+</svg>
