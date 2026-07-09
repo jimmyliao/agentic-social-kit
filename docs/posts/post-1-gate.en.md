@@ -64,7 +64,7 @@ The point is **fail-closed**: anything not explicitly allowed does *not* default
 
 And this gate doesn't return a binary yes/no — it returns **four verdicts**:
 
-![Gate decision flow](gate-flow.svg)
+![Gate decision flow](gate-flow.en.svg)
 
 `APPROVE` lets it through, `DENY` hard-blocks, `↓DOWNGRADE` retries a softer version, `ASK_USER` escalates to a human. Here's what that looks like inside The Mixer.
 

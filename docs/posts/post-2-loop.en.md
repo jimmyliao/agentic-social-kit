@@ -12,7 +12,7 @@ lang: en
 >
 > Tags: **#GoogleAntigravity #AgenticArchitect**
 
-![self-correcting loop](loop-cycle.svg)
+![self-correcting loop](loop-cycle.en.svg)
 
 ---
 

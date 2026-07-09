@@ -43,7 +43,7 @@ We're no longer just telling one agent to do one thing. We're starting to let ag
 
 That picture looks like this:
 
-![The missing layer](intro-gap.svg)
+![The missing layer](intro-gap.en.svg)
 
 When delegation goes from "human → one agent" to "human → a team → agents pushing work between themselves," it all comes down to one question:
 
