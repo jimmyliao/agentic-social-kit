@@ -35,7 +35,8 @@ ask-user decisions).
 ## What's NEXT 🎯 (priority order)
 1. **First social post** — theme *Declarative Safety Gate*. Hook + `the-mixer.mp4`.
    Tags `#GoogleAntigravity #AgenticArchitect`. Draft below in "Social post drafts".
-   (Repo link to be added once public — see Publishing gate.)
+   Repo link filled in (repo went public 2026-07-08):
+   https://github.com/jimmyliao/agentic-social-kit
 2. **Loop-engineering deepening** (→ becomes 2nd post + strongest blog section):
    the current loop is **shallow** (turn loop + triggers + memory, but no independent
    verification). Deepen it into a **self-correcting (Reflexion-style) loop**:
@@ -69,10 +70,11 @@ GOOGLE_API_KEY=... uv run --with google-antigravity --with google-genai python p
 Python via `uv run --with <pkg>` (no venv/pip — PEP668). `codex exec` CANNOT write
 files in the sandbox here (bwrap RTM_NEWADDR) — do coding yourself / via Claude agents.
 
-## Publishing gate ⚠️
-Before this repo goes **public** (or any post links to it), it must pass a
-**"no confidential content" review** — generic patterns only. Until signed off,
-keep the GitHub repo **private**. Going public is the owner's call.
+## Publishing gate ⚠️ — CLEARED 2026-07-08
+Before this repo went **public** (or any post linked to it), it had to pass a
+**"no confidential content" review** — generic patterns only. Review passed
+(one client-name reference found in old commit history, squashed out before
+going public); repo is now **public**.
 
 ## Social post drafts (ready to refine)
 **X / LinkedIn (EN)**
@@ -80,9 +82,11 @@ keep the GitHub repo **private**. Going public is the owner's call.
 > gate** first? I built **"The Mixer"** on the Google Antigravity SDK — 5 AI personas
 > socializing on their own, but every interaction is routed through policy:
 > ✅ approve · ↓ downgrade · 🔒 ask-user. The gate is the protagonist. 🎥👇
+> https://github.com/jimmyliao/agentic-social-kit
 > #GoogleAntigravity #AgenticArchitect
 
 **小紅書 (ZH)**
 > 如果讓 AI 分身自己社交，但每一步都先過一道「安全閘」會怎樣？我用 Google Antigravity
 > SDK 做了 The Mixer：5 個 AI persona 自主社交，但每次互動都被 policy 治理——核准/降級/需同意。
-> 治理才是主角。🎥 #GoogleAntigravity #AgenticArchitect
+> 治理才是主角。🎥 https://github.com/jimmyliao/agentic-social-kit
+> #GoogleAntigravity #AgenticArchitect
