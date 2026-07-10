@@ -90,3 +90,64 @@ going public); repo is now **public**.
 > SDK 做了 The Mixer：5 個 AI persona 自主社交，但每次互動都被 policy 治理——核准/降級/需同意。
 > 治理才是主角。🎥 https://github.com/jimmyliao/agentic-social-kit
 > #GoogleAntigravity #AgenticArchitect
+
+---
+
+## 決策紀錄（怎麼走到今天這個狀態）
+
+依時間序，這個 repo 從「私有 WIP」變成「public GDE 投稿」經過這些明確決策點——**每一個都是 Jimmy 明確拍板，不是 agent 自己決定的**：
+
+1. **No-confidential-content review**（review 全 repo：client 名、私有資料、第三方設計）→ PASS，
+   唯一問題：舊 commit history 裡藏著 client 名 "NTU"。
+2. **修法方式選 2**：整個 history squash 成單一 commit（非逐 commit 手術式清除）。
+   舊 11-commit history 保留在本機分支 `master-old-history-backup`（未 push，僅本機備份，未刪除）。
+3. **確認執行 squash + force-push** → `origin/master` 變成單一 root commit `429ec0a`。
+4. **確認翻牌 public** → `gh repo edit jimmyliao/agentic-social-kit --visibility public --accept-visibility-change-consequences`（2026-07-08）。
+5. **決定發文平台**：Medium（Google Cloud group publication，英文）＋ Jimmy 自己的 Substack
+   `memo.jimmyliao.net`（中文）。
+6. **決定內容結構**：捨棄舊的單篇 `docs/blog-draft.md`（3-paradigm 框架，沒收錄 P4 self-correcting
+   loop），改用現有的三部曲系列（`docs/posts/post-0/1/2-*.md`）—— Medium 英文拆 3 篇分開發，
+   Substack 中文版整套對應翻譯。
+7. **抓到並修正一個真的 bug**：英文版三篇 posts 引用的圖是**中文標籤的 SVG**（i18n 沒做完整，
+   只翻了文字沒翻圖）。已補 `intro-gap.en.svg` / `gate-flow.en.svg` / `loop-cycle.en.svg` 並改
+   `.en.md` 的圖片引用（commit `3917455`）。
+8. **補上 repo 連結**：`docs/HANDOFF.md` 內的 GitHub repo 連結填入（commit `09818e4`，
+   Publishing gate 標記為 CLEARED）。注意這**不是** `docs/posts/social-teaser.md` 裡的 `[LINK]`——
+   那個指向的是 Substack 首篇文章網址，要等 Jimmy 手動貼完 Substack 才能填。
+
+**沒有自動化發文能力**：Substack 無官方 API（非官方寫入需 session cookie，有 ToS 風險）；
+Medium 沒有可用憑證。素材已備好放在 scratchpad（Medium-EN 用 `.png`，Substack-ZH 用 `.png`），
+但**實際上稿是 Jimmy 手動做**，agent 能做的是準備好逐字稿/圖檔/checklist。
+
+---
+
+## 跨 agent 接手（agy / codex / 新開的 Claude session）
+
+任何 agent 接手這個 repo 的收尾工作，**先讀完這份 `docs/HANDOFF.md`**——這是唯一持續維護的
+狀態文件，跟 git commit 同步更新，比 `git log` 多了「為什麼」的脈絡。跨 session 的完整版
+index 另外存在 `~/.agents/personal/projects/gde-agentic-architect-sprint.md`（含 memory 連結）。
+
+**非互動呼叫範例（agy）：**
+```bash
+cd ~/workspace/personal/agentic-social-kit
+agy -p "$(cat docs/HANDOFF.md)
+
+你現在接手這個 repo。目前唯一剩下的工作是：
+1. Medium（英文，3 篇，post-0/1/2-en.md）與 Substack（中文，3 篇，post-0/1/2-zh.md）手動上稿
+   —— 這兩個平台都沒有可用的發文 API，你能做的是整理好逐字稿+圖檔清單，不要嘗試自動發文。
+2. Advocu activity log：跑 ~/.agents/personal/projects/blog/advocu-sync.py
+   （預設 dry-run，--post 才真的送出，token 在 ~/workspace/.env 的 ADVOCU=）。
+先做 dry-run 回報結果，不要加 --post。"
+```
+
+**非互動呼叫範例（codex，適合純程式碼/文字產出類任務，例如重新轉一批圖）：**
+```bash
+codex exec "cd ~/workspace/personal/agentic-social-kit && \
+把 docs/posts/*.svg 全部轉成同名 .png（uv run --with cairosvg），輸出到 /tmp 給我看清單"
+```
+
+**安全邊界（跨 agent 一律遵守，寫在最上面那條 Scope 也是同一件事）：**
+- 這是**通用、無機密**的 GDE 貢獻，不可把任何私有專案（PetCircle/HISP/LISOC/client 名）內容寫進來。
+- 破壞性 git 操作（squash / force-push / push 到 default branch）**每次都要重新明確跟 Jimmy 確認**，
+  不可用之前某一輪的簡短回覆當作默許（即使是同一個 repo、同一個晚上）。
+- 上 public、上稿發佈，都是 Jimmy 的決定，agent 不可自行執行。
