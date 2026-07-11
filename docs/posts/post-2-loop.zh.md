@@ -6,7 +6,7 @@ tags: ["#GoogleAntigravity", "#AgenticArchitect"]
 lang: zh-TW
 ---
 
-# Part 2 —〈把那道閘做到會自我修正 From a shallow gate to a self-correcting loop〉
+# [Declarative Safety Gate] Part 2：把那道閘做到會自我修正
 
 > GDE《Agentic Architect》系列三部曲的**最後一篇**。前言講「為什麼是現在」，Part 1 把那道 **Declarative Safety Gate** 做出來給你看。這篇要回頭補上一個我在 Part 1 結尾自己招認的洞 —— 那道閘只判一次，不會學。我們要把它升級成一個**會自我修正的 loop**。全部都是真的、跑得動，文末給你指令自己跑。
 >

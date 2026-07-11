@@ -1,4 +1,4 @@
-# Part 1 — The Gate is the Protagonist
+# [Declarative Safety Gate] Part 1: The Gate is the Protagonist
 
 > Part one of a three-part GDE *Agentic Architect* series. One pattern: the **Declarative Safety Gate**, built on the Google Antigravity Agent SDK (`google.antigravity`), told end-to-end through a runnable demo called **The Mixer**. All of it is real and runs; the commands are at the bottom so you can run it yourself.
 >
@@ -138,13 +138,12 @@ This last point is the one I get a kick out of.
 
 The four verdicts we built over a weekend aren't arbitrary. Map them onto Singapore IMDA's **Model Governance Framework for Agentic AI (MGF, published Jan 2026)** decision vocabulary:
 
-| The Mixer verdict | Singapore MGF vocabulary |
-|---|---|
-| `APPROVE` | ALLOW |
-| `ASK_USER` | REQUIRE_HUMAN |
-| `↓ DOWNGRADE` | CONSTRAIN (runtime limits) |
-| `DENY` | DENY |
-| (—) | THROTTLE (rate-limit) |
+**The Mixer verdict vs. Singapore MGF vocabulary:**
+- **`APPROVE`** = ALLOW
+- **`ASK_USER`** = REQUIRE_HUMAN
+- **`↓ DOWNGRADE`** = CONSTRAIN (runtime limits)
+- **`DENY`** = DENY
+- **(—)** = THROTTLE (rate-limit)
 
 **Punchline: a weekend-built declarative gate speaks the same language a national framework is standardizing.** It's not a toy — it's a reference implementation. The one gap, `THROTTLE`, even tells you where to build next.
 

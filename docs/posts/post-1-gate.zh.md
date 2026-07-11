@@ -1,4 +1,4 @@
-# Part 1 —〈The Gate is the Protagonist 那道閘才是主角〉
+# [Declarative Safety Gate] Part 1：The Gate is the Protagonist 那道閘才是主角
 
 > GDE《Agentic Architect》系列三部曲之一。一個 pattern：**Declarative Safety Gate**，蓋在 Google Antigravity Agent SDK（`google.antigravity`）上，用一個跑得起來的 demo「**The Mixer**」說完。全部都是真的、跑得動，文末會給你指令自己跑。
 >

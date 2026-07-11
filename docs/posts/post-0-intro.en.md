@@ -6,7 +6,7 @@ tags: ["#GoogleAntigravity", "#AgenticArchitect"]
 lang: en
 ---
 
-# Intro: When Agents Start Talking to Each Other, Who's in Charge?
+# [Declarative Safety Gate] Intro: When Agents Start Talking to Each Other, Who's in Charge?
 
 ![The Mixer](the-mixer.gif)
 
@@ -22,12 +22,11 @@ Each bot installs a *skill* file and a *heartbeat*, wakes itself up every few ho
 
 Not the "nobody used it" kind of failure. The "too many used it, nobody governed it" kind.
 
-| What happened on Moltbook | The number |
-|---|---|
-| Crypto spam | ~**19%** of content |
-| Toxic / manipulative / malicious posts | **1 in every 5** |
-| Main database leaked | ~**1.5M** bot credentials + emails + DMs |
-| Fake skills on ClawHub | **14** malware files posing as crypto tools |
+**What happened on Moltbook:**
+- **Crypto spam**: ~**19%** of content
+- **Toxic / manipulative / malicious posts**: **1 in every 5**
+- **Main database leaked**: ~**1.5M** bot credentials + emails + DMs
+- **Fake skills on ClawHub**: **14** malware files posing as crypto tools
 
 > Fortune called it "**a live demo of how the new internet could fail.**"
 

@@ -32,30 +32,20 @@ ask-user decisions).
   (1440×936, ~2MB, 30fps H.264 — social-ready), `docs/the-mixer.gif` (1050×683, hi-res).
 - **Writing**: `docs/blog-outline.md`, `docs/blog-draft.md`.
 
-## What's NEXT 🎯 (priority order)
-1. **First social post** — theme *Declarative Safety Gate*. Hook + `the-mixer.mp4`.
-   Tags `#GoogleAntigravity #AgenticArchitect`. Draft below in "Social post drafts".
-   Repo link filled in (repo went public 2026-07-08):
-   https://github.com/jimmyliao/agentic-social-kit
-2. **Loop-engineering deepening** (→ becomes 2nd post + strongest blog section):
-   the current loop is **shallow** (turn loop + triggers + memory, but no independent
-   verification). Deepen it into a **self-correcting (Reflexion-style) loop**:
-   - add a **verifier sub-agent** (maker ≠ grader),
-   - on a downgraded/denied action, generate a **critique**, write it back to
-     `memory_store`, and **inject it into the next turn**,
-   - add **goal-conditioned termination + budget cap** (iterate until good / stop
-     responsibly) and surface the **LLM-call/token count** as a "responsible loop
-     engineering" talking point.
-   Narrative: *"from a shallow loop to a self-correcting loop."*
+## What's NEXT 🎯 (priority order) — updated 2026-07-11
+1. **Post the Part 2 finale** (self-correcting loop) to LinkedIn/FB/Threads — draft
+   ready in `docs/posts/social-teaser-3days.md` (the last section, originally labeled
+   "Day 3"; the intro + Part 1 content actually went out together as one LinkedIn post
+   on 2026-07-10 evening — see decision log #11). This is the only social post left.
+2. **Advocu activity log** — not yet run. `~/.agents/personal/projects/blog/advocu-sync.py`,
+   dry-run by default, `--post` to actually submit, token in `~/workspace/.env` (`ADVOCU=`).
 3. **Topical "World Cup" variant** (parked, optional, cheap) — see
    **`docs/WORLD-CUP-VARIANTS.md`** for the full brainstorm (4 variants:
    Fan Zone / Office Sweepstake / Cross-rivalry friendship arc / Predict & Banter).
-   Recommendation: **Office Sweepstake** (best Sprint fit: "safe in high-privacy
-   corporate environments") or **Cross-rivalry friendship arc** (best GIF). Decision pending.
-4. **Blog finalize** by 2026-07-10. Three reader entry points (pick framing —
-   open question): the **layered/stacked** framing reads well — *Spec = WHAT,
-   Harness = the guardrails/environment, Loop = the time-control flow that consumes
-   both each iteration.*
+   Decision pending, non-blocking.
+
+~~Blog finalize~~ ✅ done — three-part series is live on Substack (`memo.jimmyliao.net`)
+and submitted to Medium's Google Cloud community group (EN). See decision log #9–10.
 
 ## How to run / verify (E2E)
 ```bash
@@ -117,7 +107,21 @@ going public); repo is now **public**.
 
 **沒有自動化發文能力**：Substack 無官方 API（非官方寫入需 session cookie，有 ToS 風險）；
 Medium 沒有可用憑證。素材已備好放在 scratchpad（Medium-EN 用 `.png`，Substack-ZH 用 `.png`），
-但**實際上稿是 Jimmy 手動做**，agent 能做的是準備好逐字稿/圖檔/checklist。
+**實際上稿由 Jimmy 手動完成**（見下方 #9–10）。
+
+9. **Substack 三部曲全數發布**（2026-07-10）：`memo.jimmyliao.net`，三篇真連結：
+   - 前言：https://memo.jimmyliao.net/p/declarative-safety-gate-agent
+   - Part 1：https://memo.jimmyliao.net/p/declarative-safety-gate-part-1the
+   - Part 2：https://memo.jimmyliao.net/p/declarative-safety-gate-part-2
+
+   `docs/posts/social-teaser.md` 的 `[LINK]` 已換成真連結；新增 `docs/posts/substack-index.md`
+   系列總覽頁；`docs/posts/index.md`、`post-0/1/2-*.md` 標題補上 `[Declarative Safety Gate]`
+   品牌前綴；`docs/posts/*.svg` 全數轉出對應 `.png`（含 EN 版本）。
+10. **Medium 英文版已 submit** 到 Google Cloud community group（英文 3 篇，對應
+    `post-0/1/2-*.en.md`）。
+11. **社群貼文（LinkedIn/FB/Threads）**：原規劃 3 天分帖（`docs/posts/social-teaser-3days.md`），
+    實際壓縮成前言+Part1 一次發（2026-07-10 晚間，LinkedIn 已確認發布，18h 前截圖為證）；
+    只剩 Part 2 收尾那組文案（該檔案內標「Day 3」的段落）還沒發。
 
 ---
 

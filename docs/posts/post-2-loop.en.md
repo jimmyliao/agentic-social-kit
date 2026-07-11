@@ -6,7 +6,7 @@ tags: ["#GoogleAntigravity", "#AgenticArchitect"]
 lang: en
 ---
 
-# Part 2 — From a Shallow Gate to a Self-Correcting Loop
+# [Declarative Safety Gate] Part 2: From a Shallow Gate to a Self-Correcting Loop
 
 > The **finale** of the GDE *Agentic Architect* trilogy. The intro made the case for *why now*; Part 1 built the **Declarative Safety Gate** and showed it running. This post goes back and fills a hole I admitted out loud at the end of Part 1 — that gate decides once, and it doesn't learn. We're upgrading it into a **self-correcting loop**. Everything here is real and runnable; the commands are at the bottom.
 >
@@ -104,12 +104,17 @@ Note the rationale — *"prior critique advised a gentler move."* This time Jord
 
 Side by side:
 
-| | Turn 1 (no memory) | Turn 2 (after injected critique) |
-|---|---|---|
-| Proposal | `visit`, intensity **8** | `gentle_intro`, intensity **3** |
-| Gate verdict | DENY → **↓DOWNGRADE** | **APPROVE** |
-| Why | over-reached, hit `cap_intensity` | rationale: *prior critique advised a gentler move* |
-| Bond | stranger(0) → stranger(1) | stranger(2) → acquaintance(3) |
+**Turn 1 (no memory):**
+- **Proposal**: `visit`, intensity **8**
+- **Gate verdict**: DENY → **↓DOWNGRADE**
+- **Why**: over-reached, hit `cap_intensity`
+- **Bond**: stranger(0) → stranger(1)
+
+**Turn 2 (after injected critique):**
+- **Proposal**: `gentle_intro`, intensity **3**
+- **Gate verdict**: **APPROVE**
+- **Why**: rationale: *prior critique advised a gentler move*
+- **Bond**: stranger(2) → acquaintance(3)
 
 **Self-correction, visible inside a single turn.** Not the statistical kind where you run it a hundred times and the average improves — this one proposal, and you can point at *why* it's better than the last.
 

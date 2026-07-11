@@ -15,17 +15,17 @@ tags: ["#GoogleAntigravity", "#AgenticArchitect"]
 
 ## 📖 三部曲
 
-**〈前言〉當 Agent 開始彼此交談，誰在管？** — 為什麼是現在
+**[Declarative Safety Gate] 前言：當 Agent 開始彼此交談，誰在管？** — 為什麼是現在
 從 Moltbook 的失控講起：當 delegation 從「人 → 一個 agent」變成「人 → 一支隊伍 → agent 互推」，缺的那一層就是治理。
-　→ [繁中](post-0-intro.zh.md) ｜ [English](post-0-intro.en.md)
+　→ [繁中閱讀](https://memo.jimmyliao.net/p/declarative-safety-gate-agent) ｜ [English](post-0-intro.en.md)
 
-**Part 1 — 那道閘才是主角** — Harness：閘長怎樣
+**[Declarative Safety Gate] Part 1：The Gate is the Protagonist 那道閘才是主角** — Harness：閘長怎樣
 把 policy 宣告成 spec、掛在 agent loop 的 pre-tool-call 關節上；用 The Mixer 真實 turn-log 走查 `DOWNGRADE` 與 `ASK_USER`，並對齊新加坡 MGF 的決策詞彙。
-　→ [繁中](post-1-gate.zh.md) ｜ [English](post-1-gate.en.md)
+　→ [繁中閱讀](https://memo.jimmyliao.net/p/declarative-safety-gate-part-1the) ｜ [English](post-1-gate.en.md)
 
-**Part 2 — 把那道閘做到會自我修正** — Loop：從淺迴圈到自我修正
+**[Declarative Safety Gate] Part 2：把那道閘做到會自我修正** — Loop：從淺迴圈到自我修正
 加上 maker≠grader 的 verifier 子代理、critique 寫回記憶並注入下一輪、goal/budget 負責任終止。真實 demo：被擋下的動作如何在下一輪自己變得更得體。
-　→ [繁中](post-2-loop.zh.md) ｜ [English](post-2-loop.en.md)
+　→ [繁中閱讀](https://memo.jimmyliao.net/p/declarative-safety-gate-part-2) ｜ [English](post-2-loop.en.md)
 
 ---
 

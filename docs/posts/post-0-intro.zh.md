@@ -6,7 +6,7 @@ tags: ["#GoogleAntigravity", "#AgenticArchitect"]
 lang: zh-TW
 ---
 
-# 〈前言〉當 Agent 開始彼此交談，誰在管？
+# [Declarative Safety Gate] 前言：當 Agent 開始彼此交談，誰在管？
 
 ![The Mixer](the-mixer.gif)
 

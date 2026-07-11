@@ -1,22 +1,32 @@
 # 社群宣傳文案 — 第一篇〈前言〉launch
 
 > 各平台短 teaser，全部導流回 Substack canonical 正文。發文前把 `[LINK]` 換成 Substack 連結。
+> 各平台短 teaser，全部導流回 Substack canonical 正文。
 > 首發日 2026-06-25。
 
 ---
 
 ## X / LinkedIn（EN）
 
-Someone built a Reddit **for AI bots only**. 1.5M agents, zero governance → ~1 in 5 posts toxic, the DB leaked. Fortune called it "a live demo of how the new internet could fail."
+> What if every move an autonomous agent makes had to pass a **declarative safety gate** first? I built **"The Mixer"** on the Google Antigravity SDK — 5 AI personas socializing on their own, but every interaction is routed through policy:
+> ✅ approve · ↓ downgrade · 🔒 ask-user. The gate is the protagonist. 🎥👇
+> 
+> Full series & runnable demo: https://memo.jimmyliao.net/p/agent
+> (GitHub repo included in the post)
+> 
+> #GoogleAntigravity #AgenticArchitect #SovereignAI
 
-When agents start talking to each other AND to us — **who's in charge?**
+---
 
-I run enterprise agents in production, on my own infra. So I built the missing layer: a **declarative safety gate** (APPROVE / DENY / DOWNGRADE / ASK_USER) that speaks the same vocabulary Singapore's national framework is busy standardizing — and it actually runs.
+## 小紅書 / LinkedIn (ZH)
 
-New 3-part series starts now 👇
-[LINK]
-
-#GoogleAntigravity #AgenticArchitect #SovereignAI
+> 如果讓 AI 分身自己社交，但每一步都先過一道「安全閘」會怎樣？我用 Google Antigravity SDK 做了 The Mixer：5 個 AI persona 自主社交，但每次互動都被 policy 治理——核准/降級/需同意。
+> 治理才是主角。🎥👇
+> 
+> 完整三部曲與開源 Demo：https://memo.jimmyliao.net/p/agent
+> (GitHub Repo 連結已附在文內)
+> 
+> #GoogleAntigravity #AgenticArchitect #SovereignAI
 
 ---
 
